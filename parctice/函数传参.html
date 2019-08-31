@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById('list');
+
+            var aLi = oUl.getElementsByTagName('li');
+            var oP1 = document.getElementById('p1');
+            var oP2 = document.getElementById('p2');
+            var oP3 = document.getElementById('p3');
+            var oBtn = document.getElementById('total');
+            //var num = [0,0,0,0];
+           var money = [];
+            var number = 0;
+            var total = 0;
+            var maxvalue = [];
+            var max=0;
+
+
+        for (var i=0; i<aLi.length; i++){
+            aLi[i].index = i;
+            money[i]=0;
+            maxvalue[i]=0;
+            fn1(aLi[i]);
+
+            }
+        function fn1(Li){
+            var aBtn = Li.getElementsByTagName('input');
+            var oEm = Li.getElementsByTagName('em')[0];
+            var oSpan = Li.getElementsByTagName('span')[0];
+            var oStrong = Li.getElementsByTagName('strong')[0];
+            var oTal = document.getElementById('total');
+            var n1=oStrong.innerHTML;
+            var n2=parseFloat(oEm.innerHTML);
+
+
+
+            aBtn[0].onclick = function(){
+                n1--;
+                //if(n1<0) n1=0;
+               // num[this.index] = n1;
+                //money[Li.index] = n1*n2;
+                if (n1>=0){
+                    num1(-1);
+                    //maxvalue[Li.index] = n2
+                }
+                else {
+                    num1(0);
+                    n1=0;
+                    maxvalue[Li.index] = 0;
+                }
+                oStrong.innerHTML = n1;
+                oSpan.innerHTML = n1*n2 + '元';
+
+                money1();
+                //maxvalue1();
+                //if(n1<=0)
+                //money1(-n1*n2);
+            }
+            aBtn[1].onclick = function () {
+                n1++;
+                oStrong.innerHTML = n1;
+                oSpan.innerHTML = n1*n2 + '元';
+                num1(1);
+                money[Li.index] = n1*n2;
+                money1();
+                if(n1=0) {
+                    maxvalue[Li.index] = 0;
+                }
+                else maxvalue[Li.index] = n2;
+                //maxvalue1();
+                //alert(Li.index);
+               // alert(money[Li.index]);
+                //alert(money);
+                //num[this.index] = n1;
+            }
+            function num1(n){
+                number = number + n;
+                oP1.innerHTML = number + '件';
+                //money = money + number * n2;
+            }
+            function maxvalue1(){
+                for (var j=0;j<maxvalue.length;j++){
+                    if (max < maxvalue[j]){
+                        max = maxvalue[j];
+                    }
+                    oP3.innerHTML = max;
+                }
+            }
+            function money1() {
+                for (var j=0;j<money.length;j++){
+                    total = total + money[j];
+                    oP2.innerHTML = total+ '元';
+                }
+                total = 0;
+            }
+        }
+
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>12.5</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>10.5</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>15.5</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>8.5</em>
+        小计：<span>0元</span>
+    </li>
+</ul>
+<input type="button" value="提交" id="total">
+<p>商品合计共: <p1 id="p1">0件</p1>，共花费了： <p2 id="p2">0元</p2><br>
+其中最贵的商品单价是：<p3 id = "p3"> 0元</p3>
+</p>
+</body>
+</html>

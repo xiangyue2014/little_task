@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function() {
+            var oUl = document.getElementById('ul1')
+            var aLi = oUl.getElementsByTagName('li');
+            var arr = ['red', 'blue', 'yellow'];
+            var str = '';
+            var flag = 0;
+            var num = 0;
+            var oldLi = null;
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index = i;
+                //aLi[i].className = '';
+                aLi[i].style.background = arr[i % arr.length];
+                fn1(aLi[i]);
+                //先存颜色
+
+                function  fn1(Li) {
+                    Li.onclick = function () {
+                        if (flag == 0) {
+                            str = this.style.background;
+                            //alert(this);
+                            alert(this.index);
+                            this.className = 'active';
+                            oldLi = Li;
+                            flag = 1;
+                        }
+                        else {
+                            alert(this.index);
+                            oldLi.className = '';
+                            oldLi = this;
+                            this.className = 'active';
+                            flag = 1;
+                            /*for (var j = 0; j < aLi.length; j++) {
+                                aLi[j].style.background = arr[j % arr.length];
+                                this.style.background = 'black';
+                            }*/
+                        }
+                        /*aLi[i].onmouseout = function(){
+                        //this.style.background = arr[this.index%arr.length];
+                        this.style.background = str;
+                    }*/
+                    }
+                }
+                }
+        }
+    </script>
+    <style>
+        li{margin-bottom: 3px; list-style: none; height: 24px;}
+        #ul1 .active{background: black};
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

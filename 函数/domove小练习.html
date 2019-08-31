@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="miaov.js"></script>
+    <style>
+        div{width: 50px;height: 50px;background: red;position: absolute;top: 0px;}
+    </style>
+    <script>
+        window.onload = function () {
+            var str = '';
+            var len = 20;
+            var  aDiv = document.getElementsByTagName('div');
+            var timer = null;
+            var num = 0;
+            for (var i = 0;i<len;i++){
+                str += '<div style="left:'+ i*60 +'px;"></div>';
+            }
+            //alert(aDiv.length);
+            document.body.innerHTML = str;
+//            function domoveagain() {
+//                timer = setInterval(function () {
+//                    domove(aDiv[num], 'top', 23, 50);
+//                    num++;
+//                    if (num === 0) {
+//                        clearInterval(timer);
+//                    }
+//                }, 100)
+//            }
+            document.onclick = function (){
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    domove(aDiv[num],'top',23,500);
+                    num++;
+                    if (num==len){
+                        clearInterval(timer);
+                        num=0;
+                        setTimeout(function () {
+                            clearInterval(timer);
+                            timer = setInterval(function () {
+                                domove(aDiv[num],'top',23,50);
+                                num++;
+                                if(num==0){
+                                    clearInterval(timer);
+                                }
+                            },100)
+                        },1000)
+                    }
+                },100)
+            }
+        }
+        //domove(aDiv[num],'top',23,500)
+                //domove(aDiv[0],'top',23,500);
+    </script>
+</head>
+<body>
+</body>
+</html>

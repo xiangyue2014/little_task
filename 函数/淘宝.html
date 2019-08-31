@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{width: 400px;height: 320px;margin: 0 auto;border: 1px solid #FF0033;position: relative}
+        #left{width: 50px;position: absolute;left:5px;}
+        #right{width: 50px;position: absolute;left:345px;}
+        input{width: 50px;height: 40px;text-align: center;color: black;border: 1px solid #FF0033;margin-top: 5px;background: #ffcc66}
+        #middle{line-height: 320px;width: 250px;height: 250px;border: 1px solid red;position: absolute;left: 73px;top:34px;background:url('dress.png')}
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('div1');
+            var oLeft = document.getElementById('left');
+            var oRight = document.getElementById('right');
+            var aInp1 = oLeft.getElementsByTagName('input');
+            var aInp2 = oRight.getElementsByTagName('input');
+            var oMiddle = document.getElementById('middle');
+            var oImg = oMiddle.getElementsByTagName('img');
+            var arrUrl1 =  ['dress.png','xuefang.png','txu.png','pants.png','bride.png','coat.png','liantipants.png','package.png','coolshose.png','shose.png','glass.png','shocks.png','fanbushose.png','lover.png'];
+            //var arrUrl2 = ['package.png','coolshose.png','shose.png','glass.png','shocks.png','fanbushose.png','lover.png'];
+            var num = 0;
+            //var flag = 0;
+            var timer1 = null;
+            var timer2 = null;
+          /* /!* for (var i = 0;i<arrUrl1.length+arrUrl2.length;i++){
+                oMiddle.innerHTML += '<img src="">';
+            }*!/
+            //chosenumber(aInp1);*/
+            timer1 = setInterval(function(){
+                num++;
+                //fn1(aInp1,arrUrl1);
+                //fn2(aInp2,arrUrl1);
+                oMiddle.style.background = 'url('+ arrUrl1[num] +')';
+                if(num==14){
+                    clearInterval(timer1);
+                }
+            },100);
+            timer2 = setInterval(function () {
+                num--;
+                oMiddle.style.background = 'url('+ arrUrl1[num] +')';
+            },100);
+                //alert(num);
+                //oMiddle.style.background = 'url('+ b[num] +')';
+                /*fn1(aInp1,arrUrl1);
+                fn2(aInp2,arrUrl1);*/
+                    /*fn1(aInp1,arrUrl1);
+                    fn2(aInp2,arrUrl1);*/
+
+            //num=arrUrl1.length;
+            /*timer = setInterval(function () {
+                num--;
+                oMiddle.style.background = 'url('+ arrUrl1[num] +')';
+            },100);*/
+            fn1(aInp1,arrUrl1);
+            fn2(aInp2,arrUrl1);
+           /* function  chosenumber(a) {
+                var str =Array.of(a);
+                alert(str);
+                var num=str.replace(/[^\d]/g,'');
+                //alert(num);
+            }*/
+            function fn1(a,b) {
+                for (var i = 0; i<a.length;i++){
+                    a[i].index = i;
+                    a[i].onmouseover = function () {
+                        num = this.index;
+                        //alert(parseInt(a));
+                        oMiddle.style.background = 'url('+ b[num] +')';
+                        //oImg[num].src = arrUrl1[num];
+                        }
+                    }
+                }
+            function fn2(a,b) {
+                for (var i = 0; i<a.length;i++){
+                    a[i].index = i;
+                    a[i].onmouseover = function () {
+                        num = this.index+a.length;
+                        oMiddle.style.background = 'url('+ b[num] +')';
+                        //alert(parseInt(a));
+                        //oImg[num].src = arrUrl1[num];
+                       // oImg[num + a.length].src = arrUrl2[num];
+                        //oImg[num + a.length].src =
+                        //oImg.src = arrUrl2[num];
+                    }
+                }
+            }
+            }
+
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="left">
+        <input type="button" value="连衣裙"><br>
+        <input type="button" value="雪纺"><br>
+        <input type="button" value="T恤"><br>
+        <input type="button" value="铅笔裤"><br>
+        <input type="button" value="婚纱"><br>
+        <input type="button" value="外套"><br>
+        <input type="button" value="连体裤">
+    </div>
+    <div id="right">
+        <input type="button" value="包包"><br>
+        <input type="button" value="凉鞋"><br>
+        <input type="button" value="单鞋"><br>
+        <input type="button" value="太阳镜"><br>
+        <input type="button" value="丝袜"><br>
+        <input type="button" value="帆布鞋"><br>
+        <input type="button" value="情侣装">
+    </div>
+    <div id="middle"></div>
+</div>
+</body>
+</html>

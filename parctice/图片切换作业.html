@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #content{width: 400px;height: 500px;border: 10px solid #ccc; position: relative; margin: 60px auto;}
+        /*#btn1,#btn2{margin:40px auto;position: absolute;}*/
+        #div1{margin: -40px 700px; position: absolute; width: 400px;height: 40px;}
+        #content a{
+            /*display: inline-block;*/
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            text-decoration: none;
+            /*line-height: 400px;*/
+            background: #000;
+            color:#fff;
+            font-weight: bold;
+            top:175px;
+            filter: alpha;(opacity:90);opacity:0.9;
+        }
+        #span1{
+            bottom: 10px;
+            width: 400px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            background: #000;
+            filter: alpha;(opacity:50);opacity:0.5;
+            color: white;
+        }
+        #p1{
+            top: 10px;
+            width: 400px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            background: #000;
+            filter: alpha;(opacity:30);opacity:0.3;
+            color: white;
+
+        }
+        #prev{
+            left: 10px;
+            position: absolute;
+        }
+        #next{
+            right: 10px;
+            position: absolute;
+        }
+
+        #img1{
+            width: 400px;
+            height: 500px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            with(document){
+                var oBtn1 = getElementById('btn1');
+                var oBtn2 = getElementById('btn2');
+                var oDiv = getElementById('div1');
+                var oContent = getElementById('content');
+                var oPrev = getElementById('prev');
+                var oNext = getElementById('next');
+                var oSpan = getElementById('span1');
+                var oImg = getElementById('img1');
+                var oP1 = getElementById('p1');
+            }
+            /*var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var oDiv = document.getElementById('div1');
+            var oContent = document.getElementById('content');
+            var oPrev = document.getElementById('prev');
+            var oNext = document.getElementById('next');
+            var oSpan = document.getElementById('span1');
+            var oImg = document.getElementById('img1');
+            var oP1 = document.getElementById('p1');*/
+            var num = 0;
+            var arrUrl = ['1.jpg', '5.jpg', '6.jpg', '14.jpg'];
+            var arrText = ['二傻子', '遇见你', '是我', '最动人的意外'];
+
+
+            oBtn1.onclick = function () {
+                around();
+            }
+            oBtn2.onclick = function () {
+                line();
+            }
+
+            var cycle = function () {
+                oP1.innerHTML = num + 1 + '/' + arrText.length;
+                oImg.src = arrUrl[num];
+                oSpan.innerHTML = arrText[num];
+            }
+            cycle();
+            var around = function () {
+                cycle();
+                oNext.onclick = function () {
+                    num++;
+                    if (num == arrText.length) {
+                        num = 0;
+                    }
+                    cycle();
+                }
+                oPrev.onclick = function () {
+                    num--;
+                    if (num == -1) {
+                        num = arrText.length - 1;
+                    }
+                    cycle();
+                };
+            }
+            var line = function () {
+                cycle();
+                oNext.onclick = function () {
+                    num++;
+                    if (num == arrText.length) {
+                        alert('这已经是最后一张图片了！');
+                        num = arrText.length-1;
+                    }
+                    cycle();
+                }
+                oPrev.onclick = function () {
+                    num--;
+                    if (num == -1) {
+                        num = 0;
+                        alert("这已经是第一张照片了！");
+                    };
+                    cycle();
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+
+<div id="div1">
+    <input type="button" id="btn1" value="循环切换">
+    <input type="button" id="btn2" value="顺序切换">
+</div>
+<div id="content">
+    <a href="#" id="prev"><</a>
+    <a href="#" id="next">></a>
+    <img src="" id="img1">
+    <p id="p1">文字加载中...</p>
+    <span id="span1">图片数量加载中...</span>
+</div>
+</body>
+</html>

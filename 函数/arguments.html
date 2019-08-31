@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="miaov.js"></script>
+    <script>
+        /*fn1(1,2,3);  //实参--实际传递的参数
+        function fn1(a,b,c) {  //形参 --形式上，abc这些名代表123    arguments =>[1,2,3] 实参的集合
+            //this return arguments event
+           // alert(arguments);
+            //alert(arguments.length);
+            //alert(arguments[arguments.length-1]);
+        }*/
+        //alert(sum(1,2,3,'+'));
+        //alert(sum(10,2,3,4,'-'));
+        /*function sum() {
+            var n=0;
+            if(arguments[arguments.length-1]=='+'){
+                for(var i=0;i<arguments.length-1;i++){
+                    n+=arguments[i];
+                }
+            }
+            else {
+                n = arguments[0];
+                for(var i=1;i<arguments.length-1;i++){
+                    n-=arguments[i];
+                }
+            }
+            return n;
+        }*/
+       /* var a=1;
+        function fn2() {
+            alert(a);
+            var a= 2;
+        }
+        fn2();
+        alert(a);*/
+      /* $(function () {
+           $('btn1').onclick = function () {
+               //alert($('div1').style.width);
+               alert(getComputedStyle($('div1')).width);  //经过浏览器运算之后的样式
+           }
+       })*/
+
+    </script>
+    <style>
+        div{width: 100px;
+            height:120px; background: red;}
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn1">
+<div id="div1"></div>
+</body>
+</html>

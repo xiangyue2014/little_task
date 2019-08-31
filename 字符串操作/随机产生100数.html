@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str=[];
+        for(var i=0;i<1000;i++){
+            str[i]=i;
+        }
+        str.sort(function (a,b) {
+            return Math.random()-0.5;
+        });
+        var substring=[];
+        for(var i=0;i<100;i++){
+            substring[i]=str[i];
+        }
+        alert(substring);
+        //alert(str.substring(0,99));
+       /* var substring='';
+        str[0]=Math.round(Math.random()*1000);
+        for(var i=0;i<100;i++){
+            substring=Math.round(Math.random()*1000);
+            for(var j=0;j<i+1;j++){
+                if(substring==str[j]){
+                    //alert(j);
+                    //str.splice(j,1);
+                    i--;
+                }
+                else {
+                    //alert(1);
+                    str[i]=substring;
+                    //alert(j);
+                }
+            }
+        //alert(str.length);
+        }*/
+        //alert(str);
+            //str += Math.round(Math.random()*1000)+',';
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

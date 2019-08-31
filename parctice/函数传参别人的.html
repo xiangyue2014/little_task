@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type = text/javascript>
+        window.onload = function(){
+            //初始化
+            init();
+        };
+        function init(){
+            var oUl = document.getElementById("list");
+            var aLi = oUl.getElementsByTagName("li");
+            var oCommNum = document.getElementById("commNum");
+            var oTotal = document.getElementById("total");
+            var oMaxPrice = document.getElementById("maxPrice");
+            var oDoms = {oCommNum:oCommNum,oTotal:oTotal,oMaxPrice:oMaxPrice};
+
+            //存储所有单价
+            var aUnitPrice = [];
+            //存储所有小计
+            var aSubPrices = [];
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index = i;
+                aUnitPrice[i] = 0;
+                aSubPrices[i] = 0;
+                fn1(aLi[i],oDoms,aUnitPrice,aSubPrices);
+            }
+        }
+        function fn1(oLi,oDoms,aUnitPrice,aSubPrices) {
+            var aBtn = oLi.getElementsByTagName('input');
+            var oStrong = oLi.getElementsByTagName('strong')[0];
+            var oEm = oLi.getElementsByTagName('em')[0];
+            var oSpan = oLi.getElementsByTagName('span')[0];
+
+            var num = parseInt(oStrong.innerHTML);
+            var price = parseFloat(oEm.innerHTML);
+            aUnitPrice[oLi.index] = price;
+            var obj = {
+                prices: 0,//小计
+                price: price,//单价
+                aUnitPrice: aUnitPrice,
+                aSubPrices: aSubPrices,
+                oStrong: oStrong,
+                oSpan: oSpan,
+                oLi: oLi
+            };
+
+            aBtn[0].onclick = function () {
+                if (num > 0) {
+                    num--;
+                    //计算价格
+                    calculation(obj, num,oDoms);
+                    //计算商品数量
+                    fnNum(-1,oDoms);
+                }
+            };
+
+            aBtn[1].onclick = function () {
+                num++;
+                //计算价格
+                calculation(obj, num,oDoms);
+                //计算商品数量
+                fnNum(1,oDoms);
+            };
+        }
+
+        function calculation(obj, num,oDoms) {
+            obj.prices = num * obj.price;
+            obj.oStrong.innerHTML = num;
+            obj.oSpan.innerHTML = obj.prices + "元";
+            obj.aSubPrices[obj.oLi.index] = obj.prices;
+            //商品总价
+            var totalPic = 0;
+            for(var i = 0;i<obj.aSubPrices.length;i++){
+                totalPic += obj.aSubPrices[i];
+            }
+            oDoms.oTotal.innerHTML = totalPic + '元';
+            //计算最贵的商品
+            var max = Math.max.apply(null,obj.aUnitPrice);
+            oDoms.oMaxPrice.innerHTML = max;
+            console.log(max);
+        }
+
+        var nums = 0;
+        function fnNum(n,oDoms) {
+            nums = nums + n;
+            oDoms.oCommNum.innerHTML = nums;
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<em>10元</em>
+        小计：<span>0</span>
+    </li>
+    <li>
+        <input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<em>5元</em>
+        小计：<span>0</span>
+    </li>
+    <li>
+        <input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<em>20元</em>
+        小计：<span>0</span>
+    </li>
+</ul>
+<div>
+    <p>商品数量：<span id="commNum">0</span></p>
+    <p>商品总价：<span id="total">0元</span></p>
+    <p>最贵的商品:<span id="maxPrice">0元</span></p>
+</div>
+</body>
+</html>

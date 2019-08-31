@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       var arr = ['100px','abc'-6,[],-98765,34,-2,0,'300', ,function(){alert(1);}.null,document,[],true,'200px'-30,'23.45元',5,Number('abc'),function(){alert(3);}];
+       //fn1();
+       function fn1(){
+           for (var i=0;i<arr.length;i++){
+               if(typeof arr[i]==='number'){
+                   if(!isNaN(arr[i])){
+                       alert(arr[i]);
+                   }
+               }
+           }
+       }
+       //fn2();
+       function fn2(){
+           var max=0;
+           for (var j=0;j<arr.length;j++){
+               if(!isNaN(parseInt(arr[j]))){
+                  //alert(arr[j]);
+                 // alert(parseInt(arr[j]));
+                   if(max < parseInt(arr[j]))
+                   {max = parseInt(arr[j]);}
+               }
+           }
+           alert(max);
+       }
+       //fn3();
+       function fn3(){
+           for (var i=0;i<arr.length;i++){
+               if (typeof arr[i]=='number'){
+                   if(isNaN(arr[i])){
+                       //alert(arr[i]);
+                       alert(i);
+               }
+
+               }
+           }
+       }
+        window.onload = function(){
+           var oText = document.getElementById('text1');
+           var oBtn = document.getElementById('btn1');
+           oBtn.onclick = function(){
+               //alert(oText.value);
+               //alert(parseInt(oText.value));
+              //var I(oText.value);
+              //var numaaa=Intvalue.length;
+               //alert(oText.innerHTML);
+               if(oText.value == ''){
+                   alert('输入不能为空');
+               }
+               else if(isNaN(oText.value)){
+                       alert('输入必须为数字');
+                   }
+                   else if(oText.value.length<5||oText.value.length>10){
+                       alert('输入长度不对！');
+                   }
+                   else if(parseInt(oText.value)!=parseFloat(oText.value)){
+                       alert('输入不能为小数！');
+                   }
+                   else if(oText.value[0]==0) {
+                       alert('输入不能有0在前面！');
+                   }
+                   else{
+                       alert('输入正确！');
+               }
+           }
+        }
+    </script>
+</head>
+<body>
+<span>请输入QQ号码：</span>
+<input type="text" id="text1">
+<input type="button" value="判断" id="btn1">
+
+</body>
+</html>

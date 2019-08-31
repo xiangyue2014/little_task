@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="miaov.js"></script>
+    <script>
+        window.onload = function () {
+            for(var i=0;i<20;i++){
+                document.body.innerHTML += '<div></div>';
+            }
+
+            var aDiv = document.getElementsByTagName('div');
+            var num=0;
+            var flag = 0;
+            var timer = null;
+            //alert(aDiv.length);
+            for(var i = 0;i<aDiv.length;i++){
+                aDiv[i].style.left =10+i*60+'px';
+                //aDiv[i].style.left = i*110+'px';
+            }
+                document.onclick = abc;
+                function abc() {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    domove(aDiv[num],'top',23,500);
+                    num++;
+                    if(num==aDiv.length){
+                        clearInterval(timer);
+                        num=0;
+                        document.onclick = function () {
+                            clearInterval(timer);
+                            num=0;
+                            timer = setInterval(function () {
+                                domove(aDiv[num],'top',23,50);
+                                num++;
+                                if(num==aDiv.length){
+                                    clearInterval(timer);
+                                    num=0;
+                                    document.onclick=abc;
+                                }
+                            },100)
+                        }
+
+                    }
+                },100)
+                }
+            }
+
+    </script>
+    <style>
+        div{width: 50px;height: 50px;background: red;top: 0px;float;position: absolute;}
+    </style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function(){
+            var oBtn = document.getElementById('btn1');
+            var oUI = document.getElementById('list');
+            var arr = [
+            '课时费没回复首付款两件事福利卡士大夫说了京东方是',
+            '而偶然纠纷了快递费老师的hi个狩猎和润枫领尚客服淡蓝色',
+            '偶尔欧尼爱德华回复拉锁诶诶符合差别，检测了',
+            '哈哈哈哈哈计算机的计算机但是',
+            '拉客户方欧美放烟花偶尔偶尔人员说了客服围绕我为人员'
+        ]
+            //alert(arr.length);
+            oBtn.onclick = function () {
+                // oBtn.disabled=true;
+                oUI.innerHTML = '';
+                for (var i=0;i<arr.length;i++)
+                {
+                  oUI.innerHTML +='<li>'+arr[i]+'</li>';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<input id="btn1"  type="button" value="自动生成5条新闻"/>
+<ul id="list"></ul>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="miaov.js"></script>
+    <script>
+        window.onload  = function () {
+            var oImg = document.getElementById('img1');
+            oImg.onclick = function () {
+                shake(oImg,'left',function(){
+                    shake(oImg,'top');
+                });
+            }
+
+//            oImg.onclick = function () {
+//                var pos = parseInt(getStyle(oImg,'left'));
+//                var timer = null;
+//                var num=0;
+//                var arr = [];//20,-20,18,-18
+//                for (var i=20;i>0;i-=2){
+//                arr.push(i,-i);
+//                }
+//                arr.push(0);
+//                clearInterval(timer);
+//                timer = setInterval(function () {
+//                    oImg.style.left = pos +arr[num]+'px';
+//                    num++
+//                    if(num==arr.length){
+//                        clearInterval(timer);
+//                    }
+//                },50)
+//            }
+
+        function shake(obj,attr,endFn) {
+            var pos = parseInt(getStyle(obj,attr));
+            var timer = null;
+            var num=0;
+            var pos = parseInt(getStyle(obj,attr));
+            var timer = null;
+            var num=0;
+            var arr = [];//20,-20,18,-18
+            for (var i=20;i>0;i-=2){
+                    arr.push(i,-i);
+                }
+            arr.push(0);
+            clearInterval(timer);
+            timer = setInterval(function () {
+                obj.style[attr] = pos +arr[num]+'px';
+                num++
+                if(num==arr.length){
+                    clearInterval(timer);
+                    endFn&&endFn();
+                    clearInterval(timer);
+                }
+            },50)
+        }
+        }
+    </script>
+    <style>
+        img{position: absolute;top:200px;left: 300px;width: 200px;height: 200px;}
+    </style>
+</head>
+<body>
+<img id="img1" src="1.jpg">
+</body>
+</html>

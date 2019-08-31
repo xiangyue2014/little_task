@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+//        alert('莫涛'>'杜鹏');
+//        alert('abbbbbb'>'b');
+       // alert('1000'>'2');
+
+        //alert(str.substring(2,0));   //可以检测两个数，大的发给后面，小的放前面。
+        //alert(str.substring(-3,2));   //-3当成0 来处理。
+        //alert(str.slice(-4,-2));     //负数就是从后面倒着往前数
+        window.onload = function () {
+            var oP = document.getElementsByTagName('p')[0];
+            var oSpan = oP.getElementsByTagName('span')[0];
+            var oA = oP.getElementsByTagName('a')[0];
+            var str = oSpan.innerHTML;
+            var onoff = true;
+            oA.onclick = function () {
+                if(onoff){
+                    oSpan.innerHTML = str.substring(0,18);
+                    oA.innerHTML = '>>展开';
+                }else {
+                    oSpan.innerHTML = str;
+                    oA.innerHTML = '>>收缩';
+                }
+                onoff = !onoff;
+            }
+        }
+
+    </script>
+</head>
+<body>
+<p><span>妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！<br>
+    2013年底，妙味课堂最新推出“远程培训”服务，受到很多朋友的喜爱与追捧，我们将更加努力的帮助远程学习的朋友实现技术提升</span>...<a href="jacascript:;">>>收缩></p>
+</body>
+</html>

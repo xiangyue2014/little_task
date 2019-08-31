@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        li{list-style: none; float: left; margin-bottom: 20px;margin-top: 10px;}
+
+        h2{display: inline-block;margin-top: 50px;margin-left: 100px;}
+        #btn{width: 80px; height: 30px; background: red; border: 0px;}
+        #change {width: 100px;height:100px;border:1px solid #000000; margin-left: 100px;margin-top: 50px; overflow: hidden;}
+        #out{width: 300px;height: 300px;background: rgba(110, 115, 114, 0.78);position:;absolute;opacity:0.3;margin:100px auto auto 550px; border: 1px solid rgba(110, 115, 114, 0.78);display: none;}
+        #in{width:260px;height: 260px;background: white; margin: 20px;}
+        /*li{list-style: none; float: right;}*/
+        .ul2{float:right; }
+        .ul1{margin-bottom:20px;float: right;}
+        #reset {position: absolute;margin-top: 220px; margin-left: -220px; width: 80px;height: 30px;background: #4c8dff;}
+        #ok {position: absolute;margin-top: 220px; margin-left: -90px; width: 80px;height: 30px;background: #4c8dff;}
+        /*#bgr{width: 30px;height: 30px;background: red; text-align: center; line-height: 30px; margin-left: 10px;}*/
+        /*#bgg{width: 30px;height: 30px;background: green; text-align:center;line-height: 30px;margin-left: 10px;}*/
+        /*#bgb{width: 30px;height: 30px;background: dodgerblue; text-align:center;line-height: 30px;margin-left: 10px;}*/
+        /*#wid2{width: 30px;height: 20px; text-align:center; border: 1px solid #000000;line-height: 20px; margin-left: 10px;}*/
+        /*#wid3{width: 30px;height: 20px; text-align:center; border: 1px solid #000000;line-height: 20px; margin-left: 10px;}*/
+        /*#wid4{width: 30px;height: 20px; text-align:center; border: 1px solid #000000;line-height: 20px; margin-left: 10px;}*/
+        /*#hei2{width: 30px;height: 20px; text-align:center; border: 1px solid #000000;line-height: 20px; margin-left: 10px;}*/
+        /*#hei3{width: 30px;height: 20px; text-align:center; border: 1px solid #000000;line-height: 20px; margin-left: 10px;}*/
+        /*#hei4{width: 30px;height: 20px; text-align:center; border: 1px solid #000000;line-height: 20px; margin-left: 10px;}*/
+        .ul2 li{ width:30px; height:25px; text-align:center; color:#000; border:1px solid #663; display:inline-block; margin-top:-20px;margin-left: 20px; line-height: 25px;}
+        #bgr{ background:red;}
+        #bgg{ background:green;}
+        #bgb{ background:dodgerblue;}
+    </style>
+    <script>
+        window.onload = function(){
+            var ochange = document.getElementById('change');
+            var oout = document.getElementById('out');
+            var obtn = document.getElementById('btn');
+            var oreset = document.getElementById('reset');
+            var ook = document.getElementById('ok');
+
+            var obgr = document.getElementById('bgr');
+            var obgg = document.getElementById('bgg');
+            var obgb = document.getElementById('bgb');
+
+
+            var owid2 = document.getElementById('wid2');
+            var owid3 = document.getElementById('wid3');
+            var owid4 = document.getElementById('wid4');
+
+            var ohei2 = document.getElementById('hei2');
+            var ohei3 = document.getElementById('hei3');
+            var ohei4 = document.getElementById('hei4');
+
+            obtn.onclick = function(){
+            oout.style.display='block';
+            oout.style.position='absolute';
+//            oout.style.zIndex='10';
+            }
+
+
+            obgr.onclick = function(){
+                ochange.style.background = 'red';
+            }
+            obgg.onclick = function(){
+                ochange.style.background = 'green';
+                }
+            obgb.onclick = function(){
+                ochange.style.background = 'dodgerblue';
+                }
+
+
+            owid2.onclick = function(){
+                ochange.style.width='200px';
+            }
+            owid3.onclick = function(){
+                ochange.style.width='300px';
+            }
+            owid4.onclick = function(){
+                ochange.style.width='400px';
+            }
+
+            ohei2.onclick = function(){
+                ochange.style.height='200px';
+            }
+            ohei3.onclick = function(){
+                ochange.style.height='300px';
+            }
+            ohei4.onclick = function(){
+                ochange.style.height='400px';
+            }
+
+
+            oreset.onclick = function(){
+                ochange.style.width='100px';
+                ochange.style.height = '100px';
+                ochange.style.background='white';
+            }
+
+            ook.onclick = function(){
+                oout.style.display='none';
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>请为下面的div设置样式：</h2>
+<input  id="btn" type="button" value="点击设置" >
+
+<div id="out" >
+    <div id="in">
+        <ul class="ul1">
+            <li>请选择背景颜色：
+                <ul class="ul2">
+                    <li id="bgr">红</li>
+                    <li id="bgg">绿</li>
+                    <li id="bgb">蓝</li>
+                </ul>
+            </li>
+            <li>请选择宽度(px)：
+            <ul class="ul2">
+                <li id="wid2">200</li>
+                <li id="wid3">300</li>
+                <li id="wid4">400</li>
+            </ul>
+            </li>
+            <li>请选择高度(px)：
+                <ul class="ul2">
+                    <li id="hei2">200</li>
+                    <li id="hei3">300</li>
+                    <li id="hei4">400</li>
+                </ul>
+            </li>
+         <input type="button" value="重置" id="reset">
+            <input type="button" value="确定" id="ok">
+        </ul>
+    </div>
+
+</div>
+<div id="change"></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       /* $(function (){
+            $('btn1').onclick = function(){
+                $(this).css('background','red');
+            }
+        })*/
+        //return返回值
+        //fn1();    =>100
+        //数字，字符串，布尔，函数，对象，（元素），未定义
+      /* window.onload = function () {
+           getId('btn1').onclick = function() {
+               alert(getId('div1').innerHTML);
+           }
+           function getId(id){
+               return document.getElementById(id);
+           }
+       }*/
+      alert(fn1(5));
+       alert(fn1(7));
+      function fn1(n) {
+          var arr = [];
+          for (var i = 1; i<=n; i++){
+              arr.push(i);
+          }
+          return arr;
+      }
+    </script>
+    <style>
+        div{width: 40px;height: 40px;background: red;}
+    </style>
+</head>
+<body>
+<input id="btn1" type="button" value="按钮">
+<!--<input type="button" id="btn1" value="提交">
+<div id="div1">123</div>-->
+</body>
+</html>

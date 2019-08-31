@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //系统时间对象
+        //alert(new Date()); //当前系统的时间对象
+        window.onload = function () {
+           setInterval(fn1,1000);
+            function fn1() {
+                var myTime = new Date();
+                var oP = document.getElementById('time');
+                var iHours = myTime.getHours();
+                var iMinutes = myTime.getMinutes();
+                var iSeconds = myTime.getSeconds();
+                var aImg = document.getElementsByTagName('img');
+                //alert(aImg.length);
+                var str = toTwo(iHours)+toTwo(iMinutes)+toTwo(iSeconds);
+                oP.innerHTML =str;
+                for(var i = 0; i<aImg.length;i++){
+                    aImg[i].src = 'img/'+str.charAt(i)+'.jpg';
+                }
+            }
+            function toTwo(n) {
+                return n<10?'0'+n:''+n;
+            }
+            //alert(iYear);
+        }
+    </script>
+</head>
+<body>
+<p id="time"></p>
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+</body>
+</html>

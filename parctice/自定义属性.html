@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script>
+       //自定义属性
+        window.onload= function () {
+            /*var oBtn = document.getElementsByTagName('input');
+            oBtn[0].abc = 123;
+            alert(oBtn[0].abc);
+            for(var i=0;i<oBtn.length;i++){
+                oBtn[i].abc=123;
+                oBtn[i].xyz=true;  //js可以为任何HTML元素添加任意个自定义属性
+            }
+            想建立一种匹配，对应关系，就用索引值
+            */
+            var aBtn = document.getElementsByTagName('input');
+            var arr=['墨墨','张森','小王']
+           for (var i=0;i<aBtn.length;i++){
+               aBtn[i].index=i;
+               aBtn[i].onclick = function (){
+                   alert(arr[this.index]);
+
+               }
+           }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="btn1">
+<input type="button" value="btn2">
+<input type="button" value="btn3">
+</body>
+</html>

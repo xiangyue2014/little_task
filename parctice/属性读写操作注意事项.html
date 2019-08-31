@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload= function() {
+            var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var oP1 = document.getElementById('p1');
+            var oBtn3 = document.getElementById('btn3');
+            var oBtn4 = document.getElementById('btn4');
+            var num = 15;
+            oBtn2.onclick = function () {
+                num++;
+                oP1.style.fontSize = num + 'px';
+            }
+            oBtn1.onclick = function () {
+                num--;
+                oP1.style.fontSize = num + 'px';
+            }
+            oBtn3.onclick = function () {
+//                oP1.style.width = '300px';
+//                oP1.style.background = 'red';
+//                oP1.style.padding = '20px';
+//                oP1.style.color = 'yellow';
+//                oP1.style.border = '10px solid #ccc';
+                oP1.className = 'red';
+            };
+        };
+    </script>
+    <style>
+        .red{width: 300px;background: red;padding: 20px;color: yellow;border: 10px solid #ccc;}
+    </style>
+</head>
+<body>
+     <input  id="btn1" type="button" value="-">
+     <input  id="btn2" type="button" value="+">
+     <input  id="btn3" type="button" value="红色">
+     <input  id="btn4" type="button" value="绿色">
+<p id="p1" style="font-size:16px;">就是这么帅，哈哈哈哈，追不上我吧，及时这么强大</p>
+</body>
+</html>

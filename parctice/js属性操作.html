@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script>
+//        属性读操作，获取，找到 字符串连接 属性写操作  op.innerHTML
+        window.onload = function(){
+            var oBtn = document.getElementById('btn1');
+            var oText = document.getElementById('text1');
+            var oP1 = document.getElementById('p1');
+            oBtn.onclick = function(){
+//                oBtn.value = 'button';
+//                oText.value = oSelect.value;
+//                alert(oBtn.type);
+//                alert(oSelect.value);
+//               alert(oText.value+'在'+oSelect.value) ;
+             oP1.innerHTML=oText.value;
+             oText.value = "";
+            };
+        };
+    </script>
+</head>
+<body>
+<input id="text1" type="text" >
+<input type="button" id="btn1" value="按钮">
+<br>
+<!--<select id="select1">-->
+    <!--<option value="北京">北京</option>-->
+    <!--<option value="上海">上海</option>-->
+    <!--<option value="广州">广州</option>-->
+<!--</select>-->
+<p1 id="p1">思鹏辉</p1>
+
+</body>
+</html>

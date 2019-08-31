@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="miaov.js"></script>
+    <script>
+       $(function(){
+           var qq = $('qq');
+           var title = $('title');
+           var timer = null;
+           qq.onmouseover = show;
+           qq.onmouseout = hide;
+           title.onmouseover = show;
+           title.onmouseout = hide;
+           function show() {
+               clearInterval(timer);
+               title.style.display = 'block';
+           }
+           function hide() {
+               timer = setTimeout(function () {
+                   title.style.display = 'none';
+               },200);
+           }
+       })
+    </script>
+    <style>
+        #qq{width: 200px;height: 400px;background: #f9c;top: 10px;}
+        #title{width: 240px;height: 180px;background: #fc6;position: absolute;top: 10px;left: 220px;display: none;}
+    </style>
+</head>
+<body>
+<div id="qq"></div>
+<div id="title"></div>
+</body>
+</html>

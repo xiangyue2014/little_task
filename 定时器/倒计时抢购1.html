@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时抢购商品</title>
+    <style>
+        ul,p,h2,h3{margin: 0;padding: 0;}
+        li{list-style: none;}
+        body{}
+        .all,.all ul{width: 648px;position: relative;}
+        .all{font-size: 14px;margin: 0 auto;}
+
+        .all h2{font-size: 14px;height: 30px;line-height: 30px;border-bottom: 2px solid #a0a0a4;color: #606d50;margin-bottom: 5px;text-indent: 1em;}
+
+        .all ul{height: 320px;}
+        .all ul li{float: left;width: 160px;height:280px;border-left: 1px solid #efefef;border-right: 1px solid #efefef;position: relative;}
+        .all ul .left{border-left: 1px solid #fff;}
+        .all ul .right{border-right: 1px solid #fff;}
+        .all ul .out{width: 162px;background: url(img/out.png);border: none;}
+        .all ul li .text{width: 110px;height: 20px;border: 1px solid #efefef;color: #900075;font-size: 12px;padding: 0;background: #e0d4e8;position: inherit;top: 0;left: 0;margin-left: 5px;}
+        .all ul li .button{font-size: 14px;color: #581939;width: 32px; height: 18px;line-height: 18px;cursor: pointer;position: inherit;top: 0;left: 0;background: #f1f1f1;display: inline-block;text-align: center;}
+        .all ul li .button:hover{background: orange;}
+        .all ul li .timeLeft{font-size: 12px;width:160px;height:12px;line-height: 12px;margin: 17px auto;font-weight: bold;color: #a0a0a4;text-align: center;position: inherit;top: 0;left: 0;}
+        .all ul li img{width: 120px;height: 134px;margin-left:20px;position: inherit;top: 0;left: 0;}
+        .all ul li .info{font-size: 12px;color: #646274;width: 152px;height: 32px; line-height: 16px;margin: 14px 0 0;padding-left: 8px;position: inherit;top: 0;left: 0;}
+        .all ul li .priceT{padding-left: 8px;display: inline-block;color: #c0c0c0;position: inherit;top: 0;left: 0;font-size: 12px;}
+        .all ul li .price{color: #cc0042;font-size: 10px;height: 12px;line-height: 12px;font-weight: bold;position: inherit;top: 0;left: 0;}
+
+        .all h3{width: 648px;height: 36px;background: #e0d4e8;}
+        .all h3 span{font-size: 12px;color: #581c1d;width: 180px;height: 25px;padding: 11px 0 0;display: inline-block;text-align: center;float: left;}
+
+        .all div{width: 648px;margin-bottom: 14px;}
+        .all div ul{width: 648px;height: auto;}
+        .all div ul li{width: 648px;height: 72px;border-top: 4px solid #fff;background: #e0d4e8;border-left: none;border-right: none;}
+        .all div ul li p{width: 180px;height: 72px;line-height: 72px;overflow: hidden;font-size: 12px;color: #292832;display: inline-block;text-align: center;float: left;}
+        .all div ul li span{width: 180px;height: 72px;line-height: 72px;font-size: 8px;color: #581c1d;display: inline-block;text-align: center;float: left;font-weight: bold;}
+        .all div ul li img{float: right;width: 78px;height: 60px;border: 1px solid #954546;margin:4px 44px 6px 0;}
+        #total{color: #cc0042;font-size:12px;height: 14px;line-height: 14px; font-weight: bold;}
+    </style>
+    <script src="miaov.js"></script>
+    <script>
+        window.onload=function(){
+            var ImgUrl=[
+                '../函数/dress.png',
+                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3491500630,3600587945&fm=27&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3044333252,3281218507&fm=27&gp=0.jpg',
+                'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1252664607,537890880&fm=27&gp=0.jpg'
+            ];
+            var Intro=[
+                '疯狂599 美的微波炉',
+                '冰点价3299 惠普笔记本',
+                '钜惠1999 松下液晶电视',
+                '至低799 高品质音响'
+            ];
+            var Price=['599','3299','1999','799'];
+
+            var oDiv=document.getElementsByTagName('div')[0];
+            var oUlC=oDiv.getElementsByTagName('ul')[0];
+            var aLiC=oUlC.getElementsByTagName('li');
+
+            var oDivL=oDiv.getElementsByTagName('div')[0];
+            var oUlL=oDivL.getElementsByTagName('ul')[0];
+            var oTotal=document.getElementById('total');
+
+            //初始化
+            for(var i=0;i<aLiC.length;i++){
+                fnInitialize(i);
+            }
+
+            for(var i=0;i<aLiC.length;i++){
+                fnTimeLeft(i);
+            }
+
+            function fnTimeLeft(n){
+                var oText=aLiC[n].getElementsByTagName('input')[0];
+                var oBtn=aLiC[n].getElementsByTagName('span')[0];
+                var oTimeLeft=aLiC[n].getElementsByTagName('p')[0];
+                var oImgC=aLiC[n].getElementsByTagName('img')[0];
+                var oInfoC=aLiC[n].getElementsByTagName('p')[1];
+                var oPriceC=aLiC[n].getElementsByTagName('span')[1];
+                var iNew=null;
+                var iNow=null;
+                var t=0;
+
+                oBtn.onclick=function(){
+                    clearInterval(aLiC[n].timer);
+                    if(new Date(oText.value)-new Date()<0){
+                        alert('请输入未来的时间点');
+                    }else{
+                        iNew=new Date(oText.value);
+                        fnCountDown();
+                        aLiC[n].timer=setInterval(fnCountDown,1000);
+                    }
+                }
+
+                function fnCountDown(){
+                    iNow=new Date();
+                    t=Math.floor((iNew-iNow)/1000);
+                    var day=Math.floor(t/86400);
+                    var hours=Math.floor(t%86400/3600);
+                    var min=Math.floor(t%86400%3600/60);
+                    var sec=t%60;
+
+                    if(t<0){
+                        clearInterval(aLiC[n].timer);
+                        oUlL.innerHTML+='<li><p>'+Intro[n]+'</p><span>'+(parseFloat(Price[n])).toFixed(2)+'</span><img src="'+ImgUrl[n]+'"></li>';
+                        oTotal.innerHTML=(parseFloat(oTotal.innerHTML)+parseFloat(Price[n])).toFixed(2);
+
+                        shake(aLiC[n],'left');
+                        aLiC[n].className='out';
+
+                        doMove(oText,'top',4,320);
+                        doMove(oBtn,'top',4,320);
+                        doMove(oTimeLeft,'top',4,320);
+                        doMove(oImgC,'top',4,320);
+                        doMove(oInfoC,'top',4,320);
+                        doMove(oPriceC,'top',4,320);
+
+                        doOpct(oText,'opacity',0.2,0);
+                        doOpct(oBtn,'opacity',0.2,0);
+                        doOpct(oTimeLeft,'opacity',0.2,0);
+                        doOpct(oImgC,'opacity',0.2,0);
+                        doOpct(oInfoC,'opacity',0.2,0);
+                        doOpct(oPriceC,'opacity',0.2,0);
+                    }else{
+                        oTimeLeft.innerHTML='剩余'+toTwo(day)+'天'+toTwo(hours)+'时'+toTwo(min)+'分'+toTwo(sec)+'秒';
+                    }
+                }
+            }
+
+            //添加图片文字介绍价格的函数（初始化）
+            function fnInitialize(n){
+                var oText=aLiC[n].getElementsByTagName('input')[0];
+                // var oBtn=aLiC[n].getElementsByTagName('span')[0];
+                // var oTimeLeft=aLiC[n].getElementsByTagName('p')[0];
+                var oImgC=aLiC[n].getElementsByTagName('img')[0];
+                var oInfoC=aLiC[n].getElementsByTagName('p')[1];
+                var oPriceC=aLiC[n].getElementsByTagName('span')[1];
+
+                oText.value='February 23,2018 22:59:50';
+
+                oImgC.src=ImgUrl[n];
+                oInfoC.innerHTML=Intro[n];
+                oPriceC.innerHTML='¥'+(parseFloat(Price[n])).toFixed(2);
+            }
+            function toTwo(n){
+                return n<10?'0'+n:''+n;
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="all">
+    <h2>限购时间</h2>
+    <ul>
+        <li class="left">
+            <input class="text" type="text">
+            <span class="button">确定</span></br>
+            <p class="timeLeft">剩余00天00时00分00秒</p>
+            <img src="../函数/dress.png" width="150px" height="150px">
+            <p class="info">111</p>
+            <p class="priceT">抢购价：</p><span class="price">¥599</span>
+        </li>
+        <li>
+            <input class="text" type="text">
+            <span class="button">确定</span></br>
+            <p class="timeLeft">剩余00天00时00分00秒</p>
+            <img src="http://img1.imgtn.bdimg.com/it/u=617222663,123104816&fm=27&gp=0.jpg">
+            <p class="info">111</p>
+            <p class="priceT">抢购价：</p><span class="price">¥599</span>
+        </li>
+        <li>
+            <input class="text" type="text">
+            <span class="button">确定</span></br>
+            <p class="timeLeft">剩余00天00时00分00秒</p>
+            <img src="../函数/dress.png">
+            <p class="info">111</p>
+            <p class="priceT">抢购价：</p><span class="price">¥599</span>
+        </li>
+        <li class="right">
+            <input class="text" type="text">
+            <span class="button">确定</span></br>
+            <p class="timeLeft">剩余00天00时00分00秒</p>
+            <img src="http://img1.imgtn.bdimg.com/it/u=617222663,123104816&fm=27&gp=0.jpg">
+            <p class="info">111</p>
+            <p class="priceT">抢购价：</p><span class="price">¥599</span>
+        </li>
+    </ul>
+    <h3><span>商品名称</span><span>价钱</span></h3>
+    <div>
+        <ul>
+        </ul>
+    </div>
+    总价：<span id="total">0.00</span>元
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>demo1221</title>
+        <style>
+            *{ font-family:'微软雅黑'; padding:0; margin:0;}
+            h2{ display:inline-block; margin-top:50px; margin-left:100px;}
+            #but{ width:100px; height:50px; background:red; border:0px;}
+            #div1{ width:80px; height:80px; border:2px solid #000; margin:20px auto auto 100px;}
+            #div2{ margin:0 auto;/* width:300px; height:200px;*/ width:100%; height:100%; top:0; background:#000; opacity:0.3; display:none; }
+            #div3{ margin:0 auto; width:300px; height:265px; margin-top:200px; background:#fff;}
+            ul li{ list-style:none;}
+            .ul1{padding-top: 10px;}
+            .ul1 li{ margin:10px; height:60px;}
+            .ul2{ float:right; margin-top:-10px;}
+            .ul2 li{ width:30px; height:25px; text-align:center; color:#000; border:1px solid #663; display:inline-block;}
+            #rr{ background:#F03;}
+            #yy{ background:#C60;}
+            #bb{ background:#06F;}
+            #but2,#but3{ width:100px; margin:0 auto; display:inline; margin-left: 10px; background: blue; color: #fff;}
+        </style>
+        <script>
+            window.onload=function(){
+                var oDiv1=document.getElementById('div1');
+                var oDiv2=document.getElementById('div2');
+                var oBut=document.getElementById('but');
+                var oBut2=document.getElementById('but2');
+                var oBut3=document.getElementById('but3');
+
+                var oRr=document.getElementById('rr');
+                var oYy=document.getElementById('yy');
+                var oBb=document.getElementById('bb');
+
+                var oW1=document.getElementById('w1');
+                var oW2=document.getElementById('w2');
+                var oW3=document.getElementById('w3');
+
+                var oH1=document.getElementById('h1');
+                var oH2=document.getElementById('h2');
+                var oH3=document.getElementById('h3');
+
+
+                oBut.onclick=function(){
+                    oDiv2.style.display='block';
+                    oDiv2.style.position='absolute';
+                    oDiv2.style.zIndex='10';
+                };
+                oRr.onclick=function(){
+                    oDiv1.style.background='#F03';
+                };
+                oYy.onclick=function(){
+                    oDiv1.style.background='#C60';
+                };
+                oBb.onclick=function(){
+                    oDiv1.style.background='#06F';
+                };
+                oW1.onclick=function(){
+                    oDiv1.style.width='200px';
+                };
+                oW2.onclick=function(){
+                    oDiv1.style.width='300px';
+                };
+                oW3.onclick=function(){
+                    oDiv1.style.width='400px';
+                };
+                oH1.onclick=function(){
+                    oDiv1.style.height='200px';
+                };
+                oH2.onclick=function(){
+                    oDiv1.style.height='300px';
+                };
+                oH3.onclick=function(){
+                    oDiv1.style.height='400px';
+                };
+                oBut2.onclick=function(){
+                    oDiv1.style.width='80px';
+                    oDiv1.style.height='80px';
+                    oDiv1.style.background='#fff';
+                };
+                oBut3.onclick=function(){
+                    oDiv2.style.display='none';
+                };
+            };
+        </script>
+    </head>
+
+<body>
+<h2>请为下面的DIV设置样式：</h2>
+<input id="but" type="button" value="点击设置">
+<div id="div1"></div>
+<div id="div2">
+    <div id="div3">
+        <ul class="ul1">
+            <li>请选择背景色：
+                <ul class="ul2">
+                    <li id="rr">红</li>
+                    <li id="yy">黄</li>
+                    <li id="bb">蓝</li>
+                </ul>
+            </li>
+            <li>请选择宽(px)：
+                <ul class="ul2">
+                    <li id="w1">200</li>
+                    <li id="w2">300</li>
+                    <li id="w3">400</li>
+                </ul>
+            </li>
+            <li>请选择高(px)：
+                <ul class="ul2">
+                    <li id="h1">200</li>
+                    <li id="h2">300</li>
+                    <li id="h3">400</li>
+                </ul>
+            </li>
+            <input id="but2" type="button" value="重置">
+            <input id="but3" type="button" value="确定">
+        </ul>
+    </div>
+</div>
+</body>
+</html>

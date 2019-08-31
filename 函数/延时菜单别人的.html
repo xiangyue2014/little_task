@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        body,ul{margin: 0;padding: 0}
+        .div1{margin: 10px 30px}
+        .div2 li{float: left;}
+        .div2 ul{margin: 0 20px}
+        .div2 a{display: inline-block;margin-right: 20px;height: 20px;line-height: 20px;text-decoration: none;font-size: 13px}
+        .div2 a:hover{text-decoration: underline}
+        .div2{line-height: 30px;border: 1px solid black;position: absolute;left: 36px;top: 48px;border-radius: 5px;display: none}
+        li{list-style: none;}
+        .ul1 li{width: 80px;height: 30px;background: blue;float: left;border-radius: 5px;margin-right: 10px;line-height: 30px;text-align: center;color: white;cursor: pointer;font-size: 14px}
+        .ul1 li:hover{background: #686FFE;color: black}
+    </style>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <script type="text/javascript">
+        window.onload=function(){
+            var oDiv1=document.getElementById("div1");
+            var oDiv2=document.getElementById("div2");
+            var oUl1=oDiv1.getElementsByTagName("ul")[0];
+            var oUl2=oDiv2.getElementsByTagName("ul")[0];
+            var arr=['首页','关于我们','作品','博客'];
+            var text=[
+                ['最近更新','活动','报名试听','学员反馈'],
+                ['妙味讲师','培训方式','培训理念','联系我们'],
+                ['般固','MATRIX','留学e网','ECMall'],
+                ['JS教程','弹出层效果','3D球面标签云','Windows计算器']
+            ];
+            var aLi=oUl1.getElementsByTagName("li");
+            fn1(oUl1,arr);
+            function fn1(a,b){
+                var one=[];
+                for(var i=0;i<b.length;i++){
+                    one+="<li>"+b[i]+"</li>";
+                }
+                a.innerHTML=one;
+            };
+            var aLi2=oUl2.getElementsByTagName("li");
+            fn2();
+            function fn2(){
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].index=i
+                    aLi[i].onmouseover=function(){
+                        clearInterval(oDiv2.timer)
+                        oDiv2.style.display="inline-block"
+                        var one=[];
+                        for(var i=0;i<text[this.index].length;i++){
+                            one+='<li><a href="#">'+text[this.index][i]+'</a></li>'
+                            oUl2.innerHTML=one;
+                        }
+                        fnt();
+                    }
+                    aLi[i].onmouseout=function(){
+                        autoHide();
+                    }
+                    function fnt(){
+                        for(var i=0;i<aLi2.length;i++){
+                            aLi2[i].onmouseover=function(){
+                                clearInterval(oDiv2.timer);
+                            }
+                            aLi2[i].onmouseout=function(){
+                                autoHide();
+                            }
+                        }
+                    }
+                    function autoHide(){
+                        oDiv2.timer=setInterval(function(){
+                            oDiv2.style.display="none"
+                        },1000)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1" class="div1">
+    <ul class="ul1"></ul>
+</div>
+<div id="div2" class="div2">
+    <ul></ul>
+</div>
+</body>
+</html>

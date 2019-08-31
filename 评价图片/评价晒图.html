@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function(){
+            var aSpan = document.getElementById('span');
+            var oStar = document.getElementById('star');
+            var oImg = oStar.getElementsByTagName('img');
+            var oEva = document.getElementById('evaluation');
+            var oTip = document.getElementById('tip');
+            var arrUrl = ['123.png','T1lgl9XfXyXXXXXXXX-19-19.png','T1eMt9XclyXXXXXXXX-19-19.png'];
+            var arrText = ['很差','较差','还行','推荐','满意'];
+            var num = 0;
+            var oldli = [];
+            var onoff = 0;
+
+
+           /* for (var i=0;i<text.length;i++){
+                oUl.innerHTML += '<li></li>';
+            }*/
+            for( var j = 0;j<arrText.length;j++){
+                oImg[j].index = j;
+                oldli = [0];
+               // num = oImg[j].index;
+                oImg[j].onclick = function () {
+                    num = this.index;
+                    onoff = 1;
+                    oEva.innerHTML = arrText[num];
+                    switch (num){
+                        case 0:
+                            oImg[0].src = 'T1lgl9XfXyXXXXXXXX-19-19.png';
+                            oImg[1].src = '123.png';
+                            oImg[2].src = '123.png';
+                            oImg[3].src = '123.png';
+                            oImg[4].src = '123.png';break;
+
+
+                        case 1:
+                            oImg[0].src = 'T1lgl9XfXyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1lgl9XfXyXXXXXXXX-19-19.png';
+                            oImg[2].src = '123.png';
+                            oImg[3].src = '123.png';
+                            oImg[4].src = '123.png';break;
+                        case 2:
+                            oImg[0].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[2].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[3].src = '123.png';
+                            oImg[4].src = '123.png';break;
+                        case 3:
+                            oImg[0].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[2].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[3].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[4].src = '123.png';break;
+                        case 4:
+                            oImg[0].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[2].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[3].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[4].src = 'T1eMt9XclyXXXXXXXX-19-19.png';break;
+                    }
+                    for (var i=0;i<oldli.length;i++)
+                    oldli[0] = oImg[0].src;
+                    oldli[1] = oImg[1].src;
+                    oldli[2] = oImg[2].src;
+                    oldli[3] = oImg[3].src;
+                    oldli[4] = oImg[4].src;
+                    //alert(oldli);
+                }
+                oImg[j].onmouseover = function () {
+                    num = this.index;
+                    oTip.innerHTML = '';
+                    oEva.innerHTML = arrText[num];
+                    switch (num){
+                        case 0:
+                            oImg[0].src = 'T1lgl9XfXyXXXXXXXX-19-19.png';
+                            oImg[1].src = '123.png';
+                            oImg[2].src = '123.png';
+                            oImg[3].src = '123.png';
+                            oImg[4].src = '123.png';break;
+                        case 1:
+                            oImg[0].src = 'T1lgl9XfXyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1lgl9XfXyXXXXXXXX-19-19.png';
+                            oImg[2].src = '123.png';
+                            oImg[3].src = '123.png';
+                            oImg[4].src = '123.png';break;
+                        case 2:
+                            oImg[0].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[2].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[3].src = '123.png';
+                            oImg[4].src = '123.png';break;
+                        case 3:
+                            oImg[0].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[2].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[3].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[4].src = '123.png';break;
+                        case 4:
+                            oImg[0].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[1].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[2].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[3].src = 'T1eMt9XclyXXXXXXXX-19-19.png';
+                            oImg[4].src = 'T1eMt9XclyXXXXXXXX-19-19.png';break;
+                    }
+                }
+                oImg[j].onmouseout = function(){
+                    if (onoff ==0){
+                        oImg[0].src = '123.png';
+                        oImg[1].src = '123.png';
+                        oImg[2].src = '123.png';
+                        oImg[3].src = '123.png';
+                        oImg[4].src = '123.png';
+                    }
+                    else {
+                        for (var i=0;i<oldli.length;i++)
+                            oImg[0].src=oldli[0];
+                        oImg[1].src=oldli[1];
+                        oImg[2].src=oldli[2];
+                        oImg[3].src=oldli[3];
+                        oImg[4].src=oldli[4];
+                    }
+                    }
+            }
+        }
+    </script>
+    <style>
+        /*.outside{width: 200px;height: 50px;background: gray;}*/
+        .outside{margin: 50px auto; width: 400px;height: 50px; border:1px solid #f1f1f1; position: relative;padding-top: 30px;}
+        #point{color: orangered;}
+        #star{position: absolute;margin-top: 1px;}
+        #evaluation{margin-left: 120px;position: absolute;color: red;}
+        #tip{position: absolute;margin-left: 120px;font-size: 12px;color: red;margin-top: 3px;}
+    </style>
+</head>
+<body>
+<div class="outside">
+    <div>
+        <span id="point">*</span>
+        <span id="title">总体评价：</span>
+        <span id="star">
+            <img src="123.png">
+            <img src="123.png">
+            <img src="123.png">
+            <img src="123.png">
+            <img src="123.png">
+        </span>
+        <span id="evaluation"></span>
+        <span id="tip">请点击星星进行评价！</span>
+    </div>
+    <div>
+        <!--<span>服务评价：</span>
+        <ul>
+           &lt;!&ndash; <li><img src="123.png"></li>
+            <li><img src="123.png"></li>
+            <li><img src="123.png"></li>
+            <li><img src="123.png"></li>
+            <li><img src="123.png"></li>&ndash;&gt;
+        </ul>-->
+    </div>
+</div>
+</body>
+</html>

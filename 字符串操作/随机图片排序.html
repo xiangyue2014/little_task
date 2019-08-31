@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var oOut=document.getElementById('out');
+            var aBtn = oOut.getElementsByTagName('input');
+            var aList = document.getElementById('list');
+            var aDiv= aList.getElementsByTagName('div');
+            var aImg = aList.getElementsByTagName('img');
+            var aText = aList.getElementsByTagName('span');
+            var json={
+                url:['../函数/dress.png','../函数/glass.png','../函数/pants.png','../函数/package.png','../函数/lover.png','../函数/bride.png','../函数/xuefang.png','../函数/shose.png'],
+                text:['1. 连衣裙','2. 眼镜','3. 裤子','4. 包包','5. 爱情','6. 婚纱','7. 雪纺衫','8. 鞋子']
+            };
+            var flag=0;
+            var str=[];
+            for(var i=0;i<json.url.length;i++){
+                aList.innerHTML += '<div>'+'<img src="" style="width: 200px;height: 200px;">'+'<span style="width: 200px;height:30px;display: inline-block;text-align: center;line-height: 30px"></span>'+'</div>'
+            }
+            for(var i=0;i<aDiv.length;i++){
+                aImg[i].src = json.url[i];
+                aText[i].innerHTML = json.text[i];
+                if(i<aDiv.length/2){
+                    aDiv[i].style.left= i*200+'px';
+                    aDiv[i].style.top=50+'px';
+                }
+                else {
+                    aDiv[i].style.left = (i-4)*200+'px';
+                    aDiv[i].style.top = 280+'px';
+                }
+            }
+            aBtn[0].onclick = function () {
+                    if(flag==0) {
+                    for (var i = 0; i <aDiv.length; i++) {
+                        aImg[i].src = json.url[aDiv.length - i-1];
+                        aText[i].innerHTML = json.text[aDiv.length - i-1];
+                    }
+                    flag = 1;
+                }
+                    else {
+                        for(var i=0;i<aDiv.length;i++){
+                            aImg[i].src = json.url[i];
+                            aText[i].innerHTML = json.text[i];
+                        }
+                        flag=0;
+                    }
+            }
+            for(var i=0;i<aDiv.length;i++){
+                str[i]=i;
+            }
+            aBtn[1].onclick = function () {
+                str.sort(function(a,b) {
+                    return Math.random()-0.5
+                });
+                for(var j=0;j<str.length;j++){
+                    //alert(1);
+                    aImg[j].src = json.url[str[j]];
+                    aText[j].innerHTML = json.text[str[j]];
+                }
+            }
+
+        }
+    </script>
+    <style>
+        #out{width: 800px;height:520px; position: relative;border:1px solid black;margin: 50px auto;}
+        #out input{width: 80px;height: 40px;background: #4c8dff;line-height: 40px;text-align: center;}
+        #shunxu{position: absolute;left: 300px;}
+        #luanxu{position: absolute;left: 400px;}
+        #list div{position: absolute;border:1px solid red;height: 230px;width: 200px;}
+    </style>
+</head>
+<body>
+<div id="out">
+    <input type="button" value="从大到小" id="shunxu">
+    <input type="button" value="打乱顺序" id="luanxu">
+    <div id="list"></div>
+</div>
+</body>
+</html>

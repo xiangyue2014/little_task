@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="miaov.js"></script>
+    <script>
+        window.onload = function () {
+                var oList = document.getElementById('list');
+                var oNav = document.getElementById('nav');
+                var aLi = oNav.getElementsByTagName('li');
+                var num = 0;
+                var nn = 0;
+                var aInf = oList.getElementsByTagName('ul');
+
+                for (var i=0;i<aLi.length-1;i++){
+                    aLi[i].index = i;
+                    aLi[i].onmouseover = function () {
+                        num = this.index;
+                        //lert(this.index);
+                        aInf[num+1].style.display = 'block';
+                    };
+                    aLi[i].onmouseout = function () {
+                        num = this.index;
+                       timer = setTimeout(function () {
+                            aInf[num].style.display = 'none';
+                       },200)
+                    };
+                    for(var j=1;j<aInf.length;j++){
+                        aInf[j].index = j;
+                        aInf[j].onmouseover = function () {
+                            nn = this.index;
+                            //clearInterval(timer);
+                            aInf[nn].style.display = 'block';
+                        };
+                        aInf[j].onmouseout = function () {
+                            nn = this.index;
+                            aInf[nn].style.display = 'none';
+                        };
+                    }
+                }
+        }
+    </script>
+    <style>
+        li{padding: 0;list-style: none;margin: 0px;}
+        #nav{background: #0066FF;width: 960px;height: 40px;line-height: 40px;}
+        #nav li{display: inline-block;border-left: 1px solid #f1f1f1;color: white;width: 76px;text-align: center;}
+        #more{float: right;}
+        .inf1{background: #4c8dff;width: 330px;height: 30px;display: none;}
+        .inf1 li{display:inline-block; border-right:1px solid #666666;color:blue;padding-right: 10px;}
+        .inf2{background: #4c8dff;width: 330px;height: 30px;display: none;}
+        .inf2 li{display:inline-block; border-right:1px solid #666666;color:blue;padding-right: 10px;}
+        .inf3{background: #4c8dff;width: 330px;height: 30px;position: absolute;top:50px;left: 80px;display: none;}
+        .inf3 li{display:inline-block; border-right:1px solid #666666;color:blue;padding-right: 10px;}
+        .inf4{background: #4c8dff;width: 330px;height: 30px;position: absolute;top:50px;left: 140px;display: none;}
+        .inf4 li{display:inline-block; border-right:1px solid #666666;color:blue;padding-right: 10px;}
+    </style>
+</head>
+<body>
+<div id="list">
+    <ul id="nav">
+        <li>首页</li>
+        <li>关于我们</li>
+        <li>作品</li>
+        <li>博客</li>
+        <li id="more">>>更多</li>
+    </ul>
+    <ul id="inf" class="inf2">
+        <li>最近见证</li>
+        <li>活动</li>
+        <li>学员报名</li>
+        <li>学员反馈</li>
+    </ul>
+    <ul id="inf" class="inf2">
+        <li>妙味讲师</li>
+        <li>学费</li>
+        <li>就这样吧</li>
+        <li>我也不知道</li>
+    </ul>
+    <ul id="inf" class="inf3">
+        <li>扮酷</li>
+        <li>留学网</li>
+        <li>唉，难过</li>
+        <li>好吧</li>
+    </ul>
+    <ul id="inf" class="inf4">
+        <li>无所谓</li>
+        <li>不要想太多</li>
+        <li>稀里糊涂</li>
+        <li>就好</li>
+    </ul>
+</div>
+</body>
+</html>

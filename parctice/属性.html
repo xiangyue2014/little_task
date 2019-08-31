@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload= function() {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oP1 = document.getElementById('p1');
+        var num=15;
+        var str1 = '这是一句话';
+        var arr=['这是一句话','这是啥子','这是什么'];  //仓库 数据，文字。
+        alert(arr.length);
+        oBtn2.onclick = function () {
+           if(num<22){
+               num++;
+               oP1.style.fontSize = num + 'px';
+           };
+        };
+        oBtn1.onclick = function () {
+            if (num>10){
+                num--;
+                oP1.style.fontSize = num + 'px';
+            };
+        };
+    };
+</script>
+<body>
+    <input  id="btn1" type="button" value="-">
+        <input  id="btn2" type="button" value="+">
+        <p id="p1" style="font-size:16px;">就是这么帅，哈哈哈哈，追不上我吧，及时这么强大</p>
+</body>
+</html>
